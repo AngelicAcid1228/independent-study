@@ -43,6 +43,16 @@ class LinkedList:
         while current.next != self.tail:
             current = current.next
         self.tail = current
+        self.size -= 1
+
+    def in_list(self, element) -> bool:
+        """This method determines if a given element is in the list or not"""
+        current = self.head
+        while current is not None:
+            if current.data == element:
+                return True
+            current = current.next
+        return False
 
     def get_end(self):
         """This element returns the element at the end"""
