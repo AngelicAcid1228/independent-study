@@ -26,9 +26,16 @@ class LinkedList:
         the tail element in the list give a next that is the new node. Finally the size of the list is updated
         and the new node is also specified as the end of the list."""
         new_node = Node(value)
-        self.tail.next = new_node
-        self.tail = new_node
-        self.size += 1
+        if self.tail is None:
+            self.head = new_node
+            self.tail = new_node
+            self.size += 1
+        else:
+            self.tail.next = new_node
+            self.tail = new_node
+            self.size += 1
+
+
 
     def remove_element_front(self):
         """This element removes the first element from the list by replacing the next element in the list to be
@@ -70,3 +77,8 @@ class LinkedList:
         """This method returns whether or not the list is empty """
         return self.size == 0
 
+    def extend(self, list_passed) -> None:
+        """This method combines two linked list together without using any loops"""
+        self.tail.next = list_passed.get_front()
+
+        self.tail = list_passed.get_end()
